@@ -1,0 +1,19 @@
+[package]
+name = "rsa-der"
+version = "0.1.0"
+authors = ["caelunshun <caelunshun@gmail.com>"]
+edition = "2018"
+description = "Generates DER-encoded public keys from the `rsa` crate"
+license = "MIT/Apache-2.0"
+repository = "https://github.com/caelunshun/rsa-der"
+readme = "README.md"
+keywords = ["crypto", "cryptography", "rsa", "der"]
+categories = ["cryptography"]
+
+[dependencies]
+simple_asn1 = "0.4"
+
+[dev-dependencies]
+openssl = "0.10.24"
+rand = "0.6" # the `rsa` crate insists on using an old version of `rand`
+rsa = "0.1.3"
