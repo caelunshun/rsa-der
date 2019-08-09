@@ -1,9 +1,9 @@
 [package]
 name = "rsa-der"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["caelunshun <caelunshun@gmail.com>"]
 edition = "2018"
-description = "Generates DER-encoded public keys from the `rsa` crate"
+description = "Crate to encode RSA public keys using DER"
 license = "MIT/Apache-2.0"
 repository = "https://github.com/caelunshun/rsa-der"
 readme = "README.md"

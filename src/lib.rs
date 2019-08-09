@@ -2,7 +2,7 @@
 
 //! A simple crate to convert public RSA keys to DER encoding.
 //!
-//! Public keys are passed to this crate simply use the `n` and  `e`
+//! Public keys are passed to functions simply using the `n` and  `e`
 //! components, so any RSA library can be used in conjunction with this crate.
 //!
 //! # Examples
