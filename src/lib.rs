@@ -84,6 +84,9 @@ pub enum Error {
     ModulusNotFound,
     /// Indicates that the RSA exponent value was not found.
     ExponentNotFound,
+    /// Indicates that the RSA ASN.1 sequence did not contain exactly two values (one
+    /// for `n` and one for `e`).
+    InvalidSequenceLength,
 }
 
 type StdResult<T, E> = std::result::Result<T, E>;
@@ -100,6 +103,9 @@ impl Display for Error {
             Error::SequenceNotFound => f.write_str("ASN.1 sequence not found")?,
             Error::ModulusNotFound => f.write_str("ASN.1 public key modulus not found")?,
             Error::ExponentNotFound => f.write_str("ASN.1 public key exponent not found")?,
+            Error::InvalidSequenceLength => {
+                f.write_str("ASN.1 sequence did not contain exactly two values")?
+            }
         }
 
         Ok(())
@@ -155,6 +161,10 @@ pub fn public_key_from_der(der: &[u8]) -> Result<(Vec<u8>, Vec<u8>)> {
 
     let (n, e) = match &inner_asn[0] {
         ASN1Block::Sequence(_, blocks) => {
+            if blocks.len() != 2 {
+                return Err(Error::InvalidSequenceLength);
+            }
+
             let n = match &blocks[0] {
                 ASN1Block::Integer(_, n) => n,
                 _ => return Err(Error::ModulusNotFound),
