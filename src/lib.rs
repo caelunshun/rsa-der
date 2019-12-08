@@ -89,14 +89,12 @@ pub enum Error {
     InvalidSequenceLength,
 }
 
-type StdResult<T, E> = std::result::Result<T, E>;
-
 /// Result type for `rsa-der`. This type
 /// is equivalent to `std::result::Result<T, rsa_der::Error>`.
-pub type Result<T> = StdResult<T, Error>;
+pub type Result<T> = std::result::Result<T, Error>;
 
 impl Display for Error {
-    fn fmt(&self, f: &mut Formatter) -> StdResult<(), fmt::Error> {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         match self {
             Error::InvalidDer(e) => e.fmt(f)?,
             Error::BitStringNotFound => f.write_str("RSA bit string not found in ASN.1 blocks")?,
