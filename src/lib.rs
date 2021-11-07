@@ -21,7 +21,7 @@
 //! let der_bytes = rsa_der::public_key_to_der(&key.n().to_bytes_be(), &key.e().to_bytes_be());
 //! ```
 
-use simple_asn1::{oid, ASN1Block, BigInt, BigUint, OID};
+use simple_asn1::{oid, ASN1Block, BigInt};
 use std::fmt;
 use std::fmt::{Display, Formatter};
 
