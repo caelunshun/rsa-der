@@ -16,5 +16,5 @@ simple_asn1 = "0.6"
 [dev-dependencies]
 openssl = "0.10"
 rand = "0.6" # the `rsa` crate insists on using an old version of `rand`
-rsa = "0.1"
+rsa = "0.5"
 num-bigint-dig = "0.4"
